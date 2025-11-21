@@ -1,150 +1,75 @@
 📱 FlexTime – Controle de Jornada Híbrida
 
-Sistema mobile simples para registro e consulta de horários de trabalho presencial e home-office, desenvolvido para a Global Solution – Mobile Development (FIAP).
+Global Solution – Mobile Development + Backend Integration
 
-O aplicativo permite:
+Este projeto implementa um aplicativo mobile desenvolvido em React Native com Expo, consumindo uma API RESTful em Java Spring Boot responsável pelo CRUD completo da jornada de trabalho dos usuários.
 
-Registrar o local da jornada e o horário
-
-Visualizar histórico de registros
-
-Acessar uma tela de perfil
-
-Consumir uma API externa usando Axios
-
-Navegar entre telas via React Navigation
-
-👨‍💻 Integrantes do Grupo
-Nome	RM	Função
-Enzo Elia Tarraga	560901	Desenvolvimento Mobile
-Rafael Terra Teodoro	560955	Backend / Suporte técnico
-Otoniel Arantes Barbado	560112	Desenvolvimento Mobile / Estrutura
-📂 Estrutura de Pastas
-flextime-mobile/
- ├── App.js
- ├── package.json
- └── src/
-       ├── routes/
-       │     └── AppRoutes.js
-       ├── screens/
-       │     ├── LoginScreen.js
-       │     ├── HomeScreen.js
-       │     ├── RegisterWorkScreen.js
-       │     ├── HistoryScreen.js
-       │     └── ProfileScreen.js
-       ├── components/
-       │     ├── Button.js
-       │     └── Input.js
-       └── services/
-             └── api.js
-
-⚙️ Tecnologias Utilizadas
+👥 Integrantes do Grupo
+Nome	RM	Responsabilidade
+Enzo Elia Tarraga	RM 560901	Mobile (React Native), Integração com API, Documentação
+Rafael Terra Teodoro	RM 560955	Backend (API Java), Testes, Modelagem
+Otoniel Arantes Barbado	RM 560112	Banco de Dados, Configuração de ambiente, Suporte ao backend
+🚀 Tecnologias Utilizadas
+Mobile (Frontend)
 
 React Native (Expo)
 
-Axios (requisições HTTP)
-
 React Navigation
 
-JavaScript ES6
+Axios para chamadas HTTP
 
-API externa JSONPlaceholder (temporário até integrar com API própria)
+StyleSheet (sem bibliotecas avançadas)
 
-▶️ Como rodar o projeto
-1️⃣ Pré-requisitos
+Componentização simples (Input, Button)
 
-Instalar:
+Backend (API REST)
 
-Node.js LTS
+Java 17
 
-Expo CLI (use sempre via npx)
+Spring Boot
 
-Android Studio OU aplicativo Expo Go no celular
+Spring Web
 
-2️⃣ Instalar dependências
+Spring Data JPA
 
-No diretório do projeto, rodar:
+Banco de Dados (Oracle / H2 / PostgreSQL)
 
-npm install
+Postman para testes
 
+📌 Funcionalidades Implementadas
+📱 Aplicativo Mobile
 
-Se o Expo pedir correção de dependências:
+✔ Login simples
+✔ Tela inicial (menu)
+✔ Registro de jornada (Create)
+✔ Histórico de registros (Read)
+✔ Atualização (Update) — via API
+✔ Exclusão (Delete) — via API
+✔ Perfil do usuário
+✔ Feedback visual com alerts
+✔ Layout padronizado
+✔ Integração com API real
 
-npx expo doctor --fix-dependencies
+🌐 API REST – CRUD Completo
 
-3️⃣ Rodar o projeto
-npx expo start
+A API implementa:
 
+➤ POST /jornadas
 
-Ao iniciar:
+Cria um novo registro de jornada.
 
-Pressione A → abre no emulador Android
+➤ GET /jornadas
 
-Pressione W → abre no navegador (precisa instalar dependências web)
+Lista todas as jornadas cadastradas.
 
-Escaneie o QR code com o Expo Go (Android)
+➤ GET /jornadas/{id}
 
-📲 Como rodar no Android Studio (emulador)
+Busca um registro específico.
 
-Abra o Android Studio
+➤ PUT /jornadas/{id}
 
-Vá em Device Manager
+Atualiza uma jornada existente.
 
-Inicie um emulador Pixel
+➤ DELETE /jornadas/{id}
 
-Com o emulador ligado, volte ao terminal e rode:
-
-npx expo start
-a
-
-🌐 Configuração da API (temporária)
-
-O app atualmente está consumindo:
-
-https://jsonplaceholder.typicode.com
-
-
-Arquivo:
-
-src/services/api.js
-
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
-});
-
-export default api;
-
-
-Em breve será substituída pela API real (Java Spring Boot) do projeto FlexTime.
-
-🧪 Testes
-
-O professor poderá testar:
-
-Login
-
-Registro de jornada
-
-Listagem de registros
-
-Navegação entre telas
-
-Se estiver usando a API real (Java), rodá-la antes do app mobile.
-
-📝 Observações
-
-Este projeto é um protótipo funcional alinhado ao escopo da disciplina.
-
-O layout foi simplificado para evitar uso de libs avançadas e garantir compatibilidade total com o Expo.
-
-Comentários foram adicionados para facilitar correções e avaliação do professor.
-
-🎓 Status da Entrega
-
-✔ App funcional
-✔ CRUD simulados via API externa
-✔ UI limpa e organizada
-✔ README completo
-⬜ Integração com API real (em desenvolvimento)
+Exclui uma jornada.
