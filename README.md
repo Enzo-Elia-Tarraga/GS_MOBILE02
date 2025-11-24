@@ -67,10 +67,12 @@ Lista todas as jornadas cadastradas.
 Busca um registro específico.
 
 ➤ PUT /jornadas/{id}
-https://youtu.be/asn54q-A-fA
-https://github.com/Enzo-Elia-Tarraga/GS_MOBILE02
+
 Atualiza uma jornada existente.
 
 ➤ DELETE /jornadas/{id}
 
 Exclui uma jornada.
+
+https://youtu.be/asn54q-A-fA
+https://github.com/Enzo-Elia-Tarraga/GS_MOBILE02
