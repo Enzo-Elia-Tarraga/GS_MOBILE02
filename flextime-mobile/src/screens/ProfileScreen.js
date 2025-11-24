@@ -1,15 +1,24 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Meu Perfil</Text>
 
-      <Text style={styles.label}>Nome:</Text>
-      <Text style={styles.value}>Usuário Teste</Text>
+      <View style={styles.card}>
+        <Text style={styles.label}>Nome:</Text>
+        <Text style={styles.value}>Usuário Exemplo</Text>
 
-      <Text style={styles.label}>Email:</Text>
-      <Text style={styles.value}>teste@email.com</Text>
+        <Text style={styles.label}>E-mail:</Text>
+        <Text style={styles.value}>usuario@email.com</Text>
+      </View>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.replace("Login")}
+      >
+        <Text style={styles.buttonText}>Sair</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -21,18 +30,38 @@ const styles = StyleSheet.create({
     backgroundColor: "#f4f6f9",
   },
   title: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: "bold",
-    marginBottom: 20,
+    textAlign: "center",
+    marginBottom: 40,
+    color: "#4A90E2",
+  },
+  card: {
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    marginBottom: 40,
   },
   label: {
     fontSize: 16,
-    color: "#666",
+    color: "#555",
     marginTop: 10,
   },
   value: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#333",
+  },
+  button: {
+    backgroundColor: "#d9534f",
+    paddingVertical: 15,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

@@ -1,25 +1,23 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import { useEffect, useState } from "react";
-import api from "../services/api";
 
 export default function HistoryScreen() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    api.get("/posts").then((res) => setItems(res.data));
-  }, []);
+  const dadosExemplo = [
+    { id: "1", entrada: "08:00", saida: "17:00" },
+    { id: "2", entrada: "08:15", saida: "17:05" },
+    { id: "3", entrada: "07:55", saida: "16:50" },
+  ];
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Histórico</Text>
+      <Text style={styles.title}>Histórico de Registros</Text>
 
       <FlatList
-        data={items}
-        keyExtractor={(item) => item.id.toString()}
+        data={dadosExemplo}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>{item.local || "Registro"}</Text>
-            <Text style={styles.cardSubtitle}>Hora: {item.hora || "--"}</Text>
+          <View style={styles.item}>
+            <Text style={styles.text}>Entrada: {item.entrada}</Text>
+            <Text style={styles.text}>Saída: {item.saida}</Text>
           </View>
         )}
       />
@@ -36,22 +34,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    marginBottom: 20,
+    textAlign: "center",
+    marginBottom: 30,
+    color: "#4A90E2",
   },
-  card: {
+  item: {
     backgroundColor: "#fff",
     padding: 15,
-    borderRadius: 12,
+    borderRadius: 10,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: "#ddd",
-    marginBottom: 12,
   },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  cardSubtitle: {
-    marginTop: 6,
-    color: "#555",
+  text: {
+    fontSize: 16,
   },
 });

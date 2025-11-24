@@ -1,30 +1,39 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import api from "../services/api";
 
 export default function RegisterWorkScreen() {
-  const [local, setLocal] = useState("");
-  const [hora, setHora] = useState("");
+  const [entrada, setEntrada] = useState("");
+  const [saida, setSaida] = useState("");
 
-  const handleSave = async () => {
-    if (!local || !hora) return alert("Preencha todos os campos.");
+  const handleRegister = () => {
+    if (!entrada || !saida) {
+      return Alert.alert("Erro", "Preencha os horários.");
+    }
 
-    await api.post("/posts", { local, hora });
-    alert("Registro salvo!");
-    setLocal("");
-    setHora("");
+    Alert.alert("Sucesso", "Horário registrado!");
+    setEntrada("");
+    setSaida("");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registrar Jornada</Text>
+      <Text style={styles.title}>Registrar Horário</Text>
 
-      <Input placeholder="Local" value={local} onChangeText={setLocal} />
-      <Input placeholder="Hora (Ex: 08:30)" value={hora} onChangeText={setHora} />
+      <Input
+        placeholder="Horário de entrada"
+        value={entrada}
+        onChangeText={setEntrada}
+      />
 
-      <Button title="Salvar" onPress={handleSave} />
+      <Input
+        placeholder="Horário de saída"
+        value={saida}
+        onChangeText={setSaida}
+      />
+
+      <Button title="Salvar" onPress={handleRegister} />
     </View>
   );
 }
@@ -38,6 +47,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    marginBottom: 20,
+    textAlign: "center",
+    marginBottom: 30,
+    color: "#4A90E2",
   },
 });
